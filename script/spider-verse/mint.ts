@@ -11,15 +11,15 @@ async function main() {
     const AssetContractFactory = await ethers.getContractFactory("AssetContractShared");
     const provider = ethers.provider;
 
-    const creator = new Wallet(process.env.FINPL_NFT_CREATOR_KEY || "");
+    const creator = new Wallet(process.env.SPIDER_VERSE_NFT_CREATOR_KEY || "");
     const creatorSigner = new NonceManager(new GasPriceManager(provider.getSigner(creator.address)));
 
     const assetContract = await AssetContractFactory.attach(process.env.ASSET_CONTRACT_SHARED_ADDRESS || "");
     const creatorContract = await assetContract.connect(creatorSigner);
 
-    const quantity = Number(process.env.FINPL_NFT_QUANTITY || "1");
-    const tokenIndex = BigNumber.from(process.env.FINPL_NFT_INDEX || "0");
-    const data = process.env.FINPL_NFT_DATA || "";
+    const quantity = Number(process.env.SPIDER_VERSE_NFT_QUANTITY || "1");
+    const tokenIndex = BigNumber.from(process.env.SPIDER_VERSE_NFT_INDEX || "0");
+    const data = process.env.SPIDER_VERSE_NFT_DATA || "";
     const buffer = ethers.utils.toUtf8Bytes(data);
 
     const tokenId = createTokenId(creator.address, tokenIndex, quantity);

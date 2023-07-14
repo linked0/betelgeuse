@@ -40,9 +40,9 @@ async function main() {
     const storefront = await StorefrontFactory.attach(process.env.LAZY_MINT_ADAPTER_ADDRESS || "");
     const assetToken = await AssetContractFactory.attach(process.env.ASSET_CONTRACT_SHARED_ADDRESS);
 
-    const quantity = Number(process.env.FINPL_NFT_QUANTITY || "1");
-    const tokenIndex = BigNumber.from(process.env.FINPL_NFT_INDEX || "0");
-    const data = process.env.FINPL_NFT_DATA || "";
+    const quantity = Number(process.env.SPIDER_VERSE_NFT_QUANTITY || "1");
+    const tokenIndex = BigNumber.from(process.env.SPIDER_VERSE_NFT_INDEX || "0");
+    const data = process.env.SPIDER_VERSE_NFT_DATA || "";
     const newTokenId = createTokenId(nftSeller.address, tokenIndex, quantity);
 
     setContracts(marketplace, assetToken);
@@ -88,6 +88,7 @@ async function main() {
     });
     const receipt = await (await tx).wait();
     console.log("receipt after fulfullOrder transaction:\n", receipt);
+    console.log("NFT to transfer:", newTokenId);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

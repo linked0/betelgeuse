@@ -163,9 +163,9 @@ describe(`Fulfilling a basic order offering NFT and getting BOA(BOASPACE)`, func
 
     it("Mint a AssetContractShared token to fulfiller", async () => {
         const creatorContract = await assetToken.connect(fulfiller);
-        tokenQuantity = Number(process.env.FINPL_NFT_QUANTITY || "1");
-        const tokenIndex = BigNumber.from(process.env.FINPL_NFT_INDEX || "0");
-        const data = process.env.FINPL_NFT_DATA || "";
+        tokenQuantity = Number(process.env.SPIDER_VERSE_NFT_QUANTITY || "1");
+        const tokenIndex = BigNumber.from(process.env.SPIDER_VERSE_NFT_INDEX || "0");
+        const data = process.env.SPIDER_VERSE_NFT_DATA || "";
         const buffer = ethers.utils.toUtf8Bytes(data);
 
         tokenId = createTokenId(fulfiller.address, tokenIndex, tokenQuantity);

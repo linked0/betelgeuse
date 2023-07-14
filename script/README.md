@@ -179,20 +179,20 @@ npx hardhat run script/add_shared_proxy.ts --network mainnet
 # Minting AssetContractShared NFT Tokens
 
 ## Set information for minting
-`.env` 파일에 BOASpace `AssetContractShared` 민팅 관리자키가 지정되어야 하고, 이 키는 `Admin2`이라는 이름으로 재단으로부터 부여된 것으로 Mainnet에 컨트랙트를 배포할 때 사용됩니다. 해당키를 `FINPL_NFT_CREATOR_KEY`에 세팅합니다.
+`.env` 파일에 BOASpace `AssetContractShared` 민팅 관리자키가 지정되어야 하고, 이 키는 `Admin2`이라는 이름으로 재단으로부터 부여된 것으로 Mainnet에 컨트랙트를 배포할 때 사용됩니다. 해당키를 `SPIDER_VERSE_NFT_CREATOR_KEY`에 세팅합니다.
 
 새로운 NFT 토큰을 민팅하기 위해서 다음의 정보를 `.env`에 세팅합니다.
 ```
-FINPL_NFT_INDEX=1
-FINPL_NFT_QUANTITY=100
-FINPL_NFT_DATA=https://ipfs.io/ipfs/QmXdYWxw3di8Uys9fmWTmdariUoUgBCsdVfHtseL2dtEP7
-FINPL_NFT_CREATOR_KEY=bacfa3fbe768c1665feee09af7182ae53ca9a334db747b3751149f81e448ac26
+SPIDER_VERSE_NFT_INDEX=1
+SPIDER_VERSE_NFT_QUANTITY=100
+SPIDER_VERSE_NFT_DATA=https://ipfs.io/ipfs/QmXdYWxw3di8Uys9fmWTmdariUoUgBCsdVfHtseL2dtEP7
+SPIDER_VERSE_NFT_CREATOR_KEY=bacfa3fbe768c1665feee09af7182ae53ca9a334db747b3751149f81e448ac26
 ```
 
 ## Mint new NFT tokens
 다음의 스크립트를 이용하여 위에 지정한 NFT 토큰을 민팅합니다.
 ```
-npx hardhat run script/finpl/mint.ts --network mainnet
+npx hardhat run script/spider-verse/mint.ts --network mainnet
 ```
 
 민팅의 결과가 다음과 같이 로그에 나타납니다.
@@ -204,7 +204,7 @@ Token minted to: 0xAcb913db781a46611fAa04Ff6Cb9A370df069eed
 ## Check the information on the minted NFT token
 민팅한 토큰의 아이디를 `.env`에 다음과 지정합니다.
 ```
-FINPL_NFT_LAST_COMBINE_TOKEN_ID=0xacb913db781a46611faa04ff6cb9a370df069eed0000000000005e0000000064
+SPIDER_VERSE_NFT_LAST_COMBINE_TOKEN_ID=0xacb913db781a46611faa04ff6cb9a370df069eed0000000000005e0000000064
 ```
 
 다음의 스크립트로 민팅된 NFT 토큰 정보을 확인할 수 있습니다.
@@ -301,7 +301,7 @@ Max Supply: 200
 ## Prerequisites
 '.env' 파일에 다음과 같이 거래하고자 하는 NFT의 아이디를 지정합니다.
 ```
-FINPL_NFT_LAST_COMBINE_TOKEN_ID=29534064577826613153035026441167017977610697301918714276122831730638822834376
+SPIDER_VERSE_NFT_LAST_COMBINE_TOKEN_ID=29534064577826613153035026441167017977610697301918714276122831730638822834376
 ```
 
 그리고, 해당 NFT의 판매자(소유자)와 구매자의 키를 `.env` 파일에 다음과 같이 지정합니다.
@@ -500,7 +500,7 @@ consideration: [
   {
     itemType: 3,
     token: '0x790c4c73155F89F93ad18e3b3B483B688E867c4b',
-    identifierOrCriteria: BigNumber { value: "29534064577826613153035026441167017977610697301918714276122832834548497121480" },
+    identifierOrCriteria: BigNumber { value: "9490434390849790054731572076376116650519590089042247525169967102305585070280" },
     startAmount: BigNumber { value: "1" },
     endAmount: BigNumber { value: "1" },
     recipient: '0x214a3aE4f8A245197db523fb81Dd8aD93c1c7B53'
@@ -508,10 +508,14 @@ consideration: [
 ]
 ```
 
-
-`.env` 파일에 다음과 같이, 새로 민팅된 NFT의 아이디를 지정하고 거래 결과를 확인할 수 있습니다.
+가장 마지막 로그의 내용은 Lazy Mint된 NFT의 아이디를 표시합니다.
 ```
-FINPL_NFT_LAST_COMBINE_TOKEN_ID=29534064577826613153035026441167017977610697301918714276122832834548497121480
+NFT to transfer: BigNumber { value: "9490434390849790054731572076376116650519590089042247525169967102305585070280" }
+```
+
+위의 로그에서 표시된 NFT의 아이디를 `.env` 파일에 다음과 같이 저장합니다.
+```
+SPIDER_VERSE_NFT_LAST_COMBINE_TOKEN_ID=9490434390849790054731572076376116650519590089042247525169967102305585070280
 ```
 다음의 스크립트 실행으로 거래 결과를 확인합니다.
 ```
@@ -554,7 +558,7 @@ offer: [
   {
     itemType: 3,
     token: '0x790c4c73155F89F93ad18e3b3B483B688E867c4b',
-    identifierOrCriteria: BigNumber { value: "29534064577826613153035026441167017977610697301918714276122833929662078386376" },
+    identifierOrCriteria: BigNumber { value: "9490434390849790054731572076376116650519590089042247525169967102305585070280" },
     startAmount: BigNumber { value: "1" },
     endAmount: BigNumber { value: "1" }
   }
@@ -573,9 +577,14 @@ consideration: [
 ]
 ```
 
-`.env` 파일에 다음과 같이, 새로 민팅된 NFT의 아이디를 지정하고 거래 결과를 확인할 수 있습니다.
+가장 마지막 로그의 내용은 Lazy Mint된 NFT의 아이디를 표시합니다.
 ```
-FINPL_NFT_LAST_COMBINE_TOKEN_ID=29534064577826613153035026441167017977610697301918714276122833929662078386376
+NFT to transfer: BigNumber { value: "9490434390849790054731572076376116650519590089042247525169967102305585070280" }
+```
+
+위의 로그에서 표시된 NFT의 아이디를 `.env` 파일에 다음과 같이 저장합니다.
+```
+SPIDER_VERSE_NFT_LAST_COMBINE_TOKEN_ID=9490434390849790054731572076376116650519590089042247525169967102305585070280
 ```
 다음의 스크립트 실행으로 거래 결과를 확인합니다.
 ```
@@ -692,7 +701,7 @@ consideration: [
   {
     itemType: 3,
     token: '0x5Ea2E76D2CEA6051bdd1D41eBAebF069BA973642',
-    identifierOrCriteria: BigNumber { value: "29534064577826613153035026441167017977610697301918714276122830631127195058376" },
+    identifierOrCriteria: BigNumber { value: "9490434390849790054731572076376116650519590089042247525169967102305585070280" },
     startAmount: BigNumber { value: "1" },
     endAmount: BigNumber { value: "1" },
     recipient: '0x214a3aE4f8A245197db523fb81Dd8aD93c1c7B53'
@@ -700,9 +709,14 @@ consideration: [
 ]
 ```
 
-`.env` 파일에 다음과 같이, 새로 민팅된 NFT의 아이디를 지정하고 거래 결과를 확인할 수 있습니다.
+가장 마지막 로그의 내용은 Lazy Mint된 NFT의 아이디를 표시합니다.
 ```
-FINPL_NFT_LAST_COMBINE_TOKEN_ID=29534064577826613153035026441167017977610697301918714276122830631127195058376
+NFT to transfer: BigNumber { value: "9490434390849790054731572076376116650519590089042247525169967102305585070280" }
+```
+
+위의 로그에서 표시된 NFT의 아이디를 `.env` 파일에 다음과 같이 저장합니다.
+```
+SPIDER_VERSE_NFT_LAST_COMBINE_TOKEN_ID=9490434390849790054731572076376116650519590089042247525169967102305585070280
 ```
 다음의 스크립트 실행으로 거래 결과를 확인합니다.
 ```

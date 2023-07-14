@@ -27,7 +27,7 @@ async function main() {
     const adminSigner = new NonceManager(new GasPriceManager(provider.getSigner(admin.address)));
     const marketplaceContract = await SeaportFactory.attach(process.env.SEAPORT_ADDRESS || "");
     const sharedAsset = await AssetContractFactory.attach(process.env.ASSET_CONTRACT_SHARED_ADDRESS || "");
-    const tokenId = BigNumber.from(process.env.FINPL_NFT_LAST_COMBINE_TOKEN_ID || "");
+    const tokenId = BigNumber.from(process.env.SPIDER_VERSE_NFT_LAST_COMBINE_TOKEN_ID || "");
     setContracts(marketplaceContract, sharedAsset);
 
     await sharedAsset.connect(nftSellerSigner).setApprovalForAll(marketplaceContract.address, true);

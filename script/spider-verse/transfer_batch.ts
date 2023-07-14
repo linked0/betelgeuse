@@ -8,7 +8,7 @@ async function main() {
     const AssetContractFactory = await ethers.getContractFactory("AssetContractShared");
     const provider = ethers.provider;
 
-    const creator = new Wallet(process.env.FINPL_NFT_CREATOR_KEY || "");
+    const creator = new Wallet(process.env.SPIDER_VERSE_NFT_CREATOR_KEY || "");
     const buyer = process.env.TRANSFER_BUYER || "";
     const proxy = new Wallet(process.env.SHARED_PROXY_KEY || "");
     const proxySigner = new NonceManager(new GasPriceManager(provider.getSigner(proxy.address)));

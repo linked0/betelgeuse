@@ -37,7 +37,7 @@ async function main() {
     const conduitController = await ConduitControlFactory.attach(process.env.CONDUIT_CONTROLLER_ADDRESS);
     const assetToken = await AssetContractFactory.attach(process.env.ASSET_CONTRACT_SHARED_ADDRESS);
     const wboaToken = await WBOAFactory.attach(process.env.WBOA_ADDRESS);
-    const tokenId = BigNumber.from(process.env.FINPL_NFT_LAST_COMBINE_TOKEN_ID || "");
+    const tokenId = BigNumber.from(process.env.SPIDER_VERSE_NFT_LAST_COMBINE_TOKEN_ID || "");
     const proxyAddress = process.env.PAYABLE_PROXY_ADDRESS || "";
 
     const { conduit: conduitAddress, exists } = await conduitController.getConduit(conduitKey);

@@ -52,9 +52,9 @@ async function main() {
     const assetToken = await AssetContractFactory.attach(process.env.ASSET_CONTRACT_SHARED_ADDRESS || "");
     const wboaToken = await WBOAFactory.attach(process.env.WBOA_ADDRESS);
 
-    const quantity = Number(process.env.FINPL_NFT_QUANTITY || "1");
-    const tokenIndex = BigNumber.from(process.env.FINPL_NFT_INDEX || "0");
-    const data = process.env.FINPL_NFT_DATA || "";
+    const quantity = Number(process.env.SPIDER_VERSE_NFT_QUANTITY || "1");
+    const tokenIndex = BigNumber.from(process.env.SPIDER_VERSE_NFT_INDEX || "0");
+    const data = process.env.SPIDER_VERSE_NFT_DATA || "";
     const newTokenId = createTokenId(nftSeller.address, tokenIndex, quantity);
 
     setContracts(marketplace, assetToken, wboaToken);
@@ -118,6 +118,7 @@ async function main() {
     });
 
     await (await tx).wait();
+    console.log("NFT to transfer:", newTokenId);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

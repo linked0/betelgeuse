@@ -6,7 +6,7 @@ async function main() {
 
     const provider = ethers.provider;
     const buyer = process.env.TRANSFER_BUYER || "";
-    const creator = new Wallet(process.env.FINPL_NFT_CREATOR_KEY || "");
+    const creator = new Wallet(process.env.SPIDER_VERSE_NFT_CREATOR_KEY || "");
 
     const assetContract = await AssetContractFactory.attach(process.env.ASSET_CONTRACT_SHARED_ADDRESS || "");
 

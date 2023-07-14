@@ -26,7 +26,7 @@ async function main() {
     const marketplace = await SeaportFactory.attach(process.env.SEAPORT_ADDRESS || "");
     const storefront = await StorefrontFactory.attach(process.env.LAZY_MINT_ADAPTER_ADDRESS || "");
     const assetToken = await AssetContractFactory.attach(process.env.ASSET_CONTRACT_SHARED_ADDRESS);
-    const tokenId = BigNumber.from(process.env.FINPL_NFT_LAST_COMBINE_TOKEN_ID || "");
+    const tokenId = BigNumber.from(process.env.SPIDER_VERSE_NFT_LAST_COMBINE_TOKEN_ID || "");
 
     setContracts(marketplace, assetToken);
 

@@ -11,12 +11,12 @@ async function main() {
     const provider = ethers.provider;
     const admin = new Wallet(process.env.ADMIN_KEY || "");
     const adminSigner = new NonceManager(new GasPriceManager(provider.getSigner(admin.address)));
-    const creator = new Wallet(process.env.FINPL_NFT_CREATOR_KEY || "");
+    const creator = new Wallet(process.env.SPIDER_VERSE_NFT_CREATOR_KEY || "");
 
     const assetContract = await AssetContractFactory.attach(process.env.ASSET_CONTRACT_SHARED_ADDRESS || "");
     const ownerAssetContract = await assetContract.connect(adminSigner);
 
-    const tokenId = BigNumber.from(process.env.FINPL_NFT_LAST_COMBINE_TOKEN_ID || "");
+    const tokenId = BigNumber.from(process.env.SPIDER_VERSE_NFT_LAST_COMBINE_TOKEN_ID || "");
     const [address, tokenIndex, maxSupply] = parseTokenId(tokenId.toString());
 
     console.log("====== Minted NFT information ======");

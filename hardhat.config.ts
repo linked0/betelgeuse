@@ -117,7 +117,7 @@ const config: HardhatUserConfig = {
     },
     mainnet: {
       url: process.env.MAINNET_URL ?? "",
-      chainId: 2151,
+      chainId: 12300,
       accounts: [
         process.env.ADMIN_KEY ?? "",
         process.env.USER_KEY ?? "",
@@ -126,7 +126,7 @@ const config: HardhatUserConfig = {
         process.env.BUYER_KEY ?? "",
         process.env.ORDER_NFT_BUYER_KEY ?? "",
         process.env.ORDER_NFT_SELLER_KEY ?? "",
-        process.env.FINPL_NFT_CREATOR_KEY ?? "",
+        process.env.SPIDER_VERSE_NFT_CREATOR_KEY ?? "",
         process.env.FEE_COLLECTOR_OWNER_KEY ?? "",
         process.env.FEE_TEST_TRANSFER_KEY ?? "",
         process.env.WBOA_DEPOSITER ?? "",
@@ -134,7 +134,7 @@ const config: HardhatUserConfig = {
     },
     testnet: {
       url: process.env.TESTNET_URL ?? "",
-      chainId: 2019,
+      chainId: 12301,
       accounts: [
         process.env.ADMIN_KEY ?? "",
         process.env.USER_KEY ?? "",
@@ -143,7 +143,7 @@ const config: HardhatUserConfig = {
         process.env.BUYER_KEY ?? "",
         process.env.ORDER_NFT_BUYER_KEY ?? "",
         process.env.ORDER_NFT_SELLER_KEY ?? "",
-        process.env.FINPL_NFT_CREATOR_KEY ?? "",
+        process.env.SPIDER_VERSE_NFT_CREATOR_KEY ?? "",
         process.env.FEE_COLLECTOR_OWNER_KEY ?? "",
         process.env.FEE_TEST_TRANSFER_KEY ?? "",
         process.env.WBOA_DEPOSITER ?? "",
@@ -160,7 +160,7 @@ const config: HardhatUserConfig = {
         process.env.BUYER_KEY ?? "",
         process.env.ORDER_NFT_BUYER_KEY ?? "",
         process.env.ORDER_NFT_SELLER_KEY ?? "",
-        process.env.FINPL_NFT_CREATOR_KEY ?? "",
+        process.env.SPIDER_VERSE_NFT_CREATOR_KEY ?? "",
         process.env.FEE_COLLECTOR_OWNER_KEY ?? "",
         process.env.FEE_TEST_TRANSFER_KEY ?? "",
         process.env.WBOA_DEPOSITER ?? "",
@@ -177,7 +177,7 @@ const config: HardhatUserConfig = {
         process.env.BUYER_KEY ?? "",
         process.env.ORDER_NFT_BUYER_KEY ?? "",
         process.env.ORDER_NFT_SELLER_KEY ?? "",
-        process.env.FINPL_NFT_CREATOR_KEY ?? "",
+        process.env.SPIDER_VERSE_NFT_CREATOR_KEY ?? "",
         process.env.FEE_COLLECTOR_OWNER_KEY ?? "",
         process.env.FEE_TEST_TRANSFER_KEY ?? "",
         process.env.WBOA_DEPOSITER ?? "",

@@ -27,12 +27,12 @@ async function main() {
 
     const proxyAddress = process.env.PAYABLE_PROXY_ADDRESS || "";
     const feeWithdrawAddress = process.env.FEE_WITHDRAW_ADDRESS || "";
-    const creator = new Wallet(process.env.FINPL_NFT_CREATOR_KEY || "");
+    const creator = new Wallet(process.env.SPIDER_VERSE_NFT_CREATOR_KEY || "");
     const nftBuyer = new Wallet(process.env.ORDER_NFT_BUYER_KEY || "");
     const nftSeller = new Wallet(process.env.ORDER_NFT_SELLER_KEY || "");
     const assetToken = await AssetContractFactory.attach(process.env.ASSET_CONTRACT_SHARED_ADDRESS || "");
     const wboaToken = await WBOAFactory.attach(process.env.WBOA_ADDRESS);
-    const tokenId = BigNumber.from(process.env.FINPL_NFT_LAST_COMBINE_TOKEN_ID || "");
+    const tokenId = BigNumber.from(process.env.SPIDER_VERSE_NFT_LAST_COMBINE_TOKEN_ID || "");
 
     setAssetContract(assetToken);
     setWBoaContract(wboaToken);
