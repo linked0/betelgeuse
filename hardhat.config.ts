@@ -132,9 +132,26 @@ const config: HardhatUserConfig = {
         process.env.WBOA_DEPOSITER ?? "",
       ],
     },
+    devnet: {
+      url: process.env.DEVNET_URL ?? "",
+      chainId: 12301,
+      accounts: [
+        process.env.ADMIN_KEY ?? "",
+        process.env.USER_KEY ?? "",
+        process.env.OWNER_KEY ?? "",
+        process.env.ZONE_KEY ?? "",
+        process.env.BUYER_KEY ?? "",
+        process.env.ORDER_NFT_BUYER_KEY ?? "",
+        process.env.ORDER_NFT_SELLER_KEY ?? "",
+        process.env.SPIDER_VERSE_NFT_CREATOR_KEY ?? "",
+        process.env.FEE_COLLECTOR_OWNER_KEY ?? "",
+        process.env.FEE_TEST_TRANSFER_KEY ?? "",
+        process.env.WBOA_DEPOSITER ?? "",
+      ],
+    },
     testnet: {
       url: process.env.TESTNET_URL ?? "",
-      chainId: 12301,
+      chainId: 12302,
       accounts: [
         process.env.ADMIN_KEY ?? "",
         process.env.USER_KEY ?? "",
