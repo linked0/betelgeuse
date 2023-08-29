@@ -11,10 +11,16 @@
   },
   "dependencies": {
     "@ethersproject/experimental": "^5.7.0",
-    "@openzeppelin/contracts": "^4.8.0",
+    "@openzeppelin/contracts": "^4.9.3",
+    "ethereumjs-tx": "2.1.2",
+    "ethereumjs-util": "^7.1.5",
     "ethers": "^5.5.3",
     "ethers-eip712": "^0.2.0",
-    "hardhat": "^2.12.1-ir.0"
+    "fs-extra": "^11.1.1",
+    "hardhat": "^2.12.1-ir.0",
+    "path": "^0.12.7",
+    "solc": "^0.8.21",
+    "web3": "^4.1.1"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.6",
