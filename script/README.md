@@ -1,4 +1,5 @@
 # Contents
+- [Contents](#contents)
 - [Deployment of contracts](#deployment-of-contracts)
   - [Prerequisites](#prerequisites)
   - [Deploying ConduitController contract](#deploying-conduitcontroller-contract)
@@ -8,12 +9,24 @@
   - [Deploying SharedStorefrontLazyMintAdapter contract](#deploying-sharedstorefrontlazymintadapter-contract)
   - [Setting the shared proxy of AssetContractShared](#setting-the-shared-proxy-of-assetcontractshared)
 - [Minting AssetContractShared NFT Tokens](#minting-assetcontractshared-nft-tokens)
-- [Trading NFTs with the Seaport contract](#trading-nfts-with-the-seaport-contract)
+  - [Set information for minting](#set-information-for-minting)
+  - [Mint new NFT tokens](#mint-new-nft-tokens)
+  - [Check the information on the minted NFT token](#check-the-information-on-the-minted-nft-token)
+  - [Trading NFTs for checking](#trading-nfts-for-checking)
+- [NFTs of the BOB's project](#nfts-of-the-bobs-project)
+  - [Mainnet BOB's project](#mainnet-bobs-project)
+  - [Testnet BOB's project](#testnet-bobs-project)
 - [Notes](#notes)
-- [Trasnfer of AssetContractShared Tokens with Seaport](#transfer-of-assetcontractshared-tokens-with-seaport)
+- [Transfer of AssetContractShared Tokens with Seaport](#transfer-of-assetcontractshared-tokens-with-seaport)
   - [Prerequisites](#prerequisites-1)
   - [Fulfill through the Seaport and SharedStorefrontLazyMintAdapter without Conduit](#fulfill-through-the-seaport-and-sharedstorefrontlazymintadapter-without-conduit)
+    - [1. NFT를 제공하고 BOA를 대금으로 받기](#1-nft를-제공하고-boa를-대금으로-받기)
+    - [2. 구매자가 WBOA를 제공하고 NFT 받기](#2-구매자가-wboa를-제공하고-nft-받기)
+    - [3. 구매자가 WBOA를 제공하고 `Lazy Mint`되는 NFT 받기](#3-구매자가-wboa를-제공하고-lazy-mint되는-nft-받기)
+    - [4. 판매자가 `Lazy Mint`되는 NFT 주고 BOA 받기](#4-판매자가-lazy-mint되는-nft-주고-boa-받기)
   - [Fulfill through the Seaport, Conduit, and SharedStorefrontLazyMintAdapter](#fulfill-through-the-seaport-conduit-and-sharedstorefrontlazymintadapter)
+    - [1. 구매자가 WBOA 제공하고 NFT 받기](#1-구매자가-wboa-제공하고-nft-받기)
+    - [2. 구매자가 WBOA를 제공하고 `Lazy Mint`되는 NFT 받기](#2-구매자가-wboa를-제공하고-lazy-mint되는-nft-받기)
   - [Fulfill only through the Seaport](#fulfill-only-through-the-seaport)
 
 All the description is for the [Bosagora Mainnet](https://boascan.io).
@@ -27,9 +40,10 @@ BOASpace 컨트랙트 배포시 다음에 기술된 순서가 지켜져야 합�
 ```
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 source .bashrc
-nvm install 16
-nvm use 16
+nvm install 20
+nvm use 20
 npm i -g yarn
+rm yarn.lock <== ethereumjs-abi 설치 에러 방지
 yarn install
 ```
 
@@ -40,7 +54,7 @@ cp .env.sample .env
 
 `.env` 파일에 BOASpace 관리자(배포자)키가 지정되어야 하고, 이 키는 `Admin1`이라는 이름으로 재단으로부터 부여된 것으로 Mainnet에 컨트랙트를 배포할 때 사용됩니다. 다음은 TestNet에서 사용되는 관리자 키입니다.
 ```
-ADMIN_KEY=0xd7912c64125d466be55d2ac220834571a39ff9abeb9ad6dfb6afe9a3a433ba7d
+ADMIN_KEY=0x58984b2bf6f0f3de4f38290ed3c541ac27bac384b378073ab133af8b314a1887
 ```
 
 ## Deploying ConduitController contract
@@ -50,12 +64,12 @@ npx hardhat run script/deploy_conduit_controller.ts --network mainnet
 ```
 컨트랙트가 정상적으로 배포되면 다음과 같은 로그가 나타납니다.
 ```
-ConduitController - deployed to: 0x4d2335c88eb74ed54CEbA06Bb8DB69c4eab5feaD
+ConduitController - deployed to: 0x64fF699B1CAF990594d96BBE16ca77129b35736E
 ```
 
 로그상의 `ConduitContraoller` 주소를 `.env` 파일의 `CONDUIT_CONTROLLER_ADDRESS`에 다음과 같이 지정합니다.
 ```
-CONDUIT_CONTROLLER_ADDRESS=0xFB15f7cB1E06544A791DbEd6AfdB9C705bF5eF60
+CONDUIT_CONTROLLER_ADDRESS=0x64fF699B1CAF990594d96BBE16ca77129b35736E
 ```
 
 ## Creating Conduit
@@ -65,7 +79,7 @@ CONDUIT_CONTROLLER_ADDRESS=0xFB15f7cB1E06544A791DbEd6AfdB9C705bF5eF60
 
 디폴트 Conduit을 생성하기 전에 `.env` 파일에 다음과 같이 사용할 Conduit 키를 지정합니다. Mainnet의 디폴트 Conduit 키는 `Admin1`의 주소로부터 생성할 수 있습니다. 다음은 Mainnet에서 사용되는 디폴트 Conduit 키입니다.
 ```
-CONDUIT_KEY=0xdedF18e2fdf26Ec8f889EfE4ec84D7206bDC431E000000000000000000000000
+CONDUIT_KEY=0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD000000000000000000000000
 ```
 
 Conduit 키는 다음의 조합으로 생성될 수 있습니다. `[address]`는 의 사용자 계정의 주소입니다.

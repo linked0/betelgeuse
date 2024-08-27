@@ -185,7 +185,7 @@ const config: HardhatUserConfig = {
     },
     localnet: {
       url: process.env.LOCALNET_URL ?? "",
-      chainId: 34559,
+      chainId: 12301,
       accounts: [
         process.env.ADMIN_KEY ?? "",
         process.env.USER_KEY ?? "",
