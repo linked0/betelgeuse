@@ -12,9 +12,23 @@
 
 Seaport is a new marketplace protocol for safely and efficiently buying and selling NFTs.
 
+## Setup
+- 관련된 모든 Contract를 다음의 명령으로 배포
+```
+yarn deploy
+yarn deploy:local
+```
+
+- Multicall contract 배포
+```
+yarn deploy:multicall
+yarn deploy:multicall:local
+```
+
 ## Table of Contents
 
 - [Seaport](#seaport)
+  - [Setup](#setup)
   - [Table of Contents](#table-of-contents)
   - [Background](#background)
   - [Deployments](#deployments)
