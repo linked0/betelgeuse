@@ -19,8 +19,6 @@ async function main() {
     const provider = ethers.provider;
 
     const nftSeller = new Wallet(process.env.ORDER_NFT_SELLER_KEY || "");
-    const admin = new Wallet(process.env.ADMIN_KEY || "");
-    const adminSigner = new NonceManager(new GasPriceManager(provider.getSigner(admin.address)));
     const nftBuyer = new Wallet(process.env.ORDER_NFT_BUYER_KEY || "");
     const nftBuyerSigner = new NonceManager(new GasPriceManager(provider.getSigner(nftBuyer.address)));
     const marketplace = await SeaportFactory.attach(process.env.SEAPORT_ADDRESS || "");
