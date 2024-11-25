@@ -63,6 +63,7 @@ ADMIN_KEY=0x58984b2bf6f0f3de4f38290ed3c541ac27bac384b378073ab133af8b314a1887
 ```
 yarn deploy
 yarn deploy:local
+yarn deploy:devnet
 ```
 
 다음의 출력값을 .env 파일에 복사한다.

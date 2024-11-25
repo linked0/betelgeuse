@@ -84,6 +84,7 @@
     "profile": "REPORT_GAS=true hardhat test --config ./hardhat.config.ts",
     "deploy": "hardhat run --network mainnet script/deploy.ts",
     "deploy:local": "hardhat run --network localnet script/deploy.ts",
+    "deploy:devnet": "hardhat run --network devnet script/deploy.ts",
     "deploy:multicall": "hardhat run --network mainnet script/deploy_multicall.ts",
     "deploy:multicall:local": "hardhat run --network localnet script/deploy_multicall.ts",
     "check": "npx hardhat run script/check_nft.ts --network mainnet",
