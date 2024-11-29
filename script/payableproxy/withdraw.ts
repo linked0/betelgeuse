@@ -10,7 +10,7 @@ async function main() {
     const feeWithdrawAddress = process.env.FEE_WITHDRAW_ADDRESS || "";
 
     const wboaFactory = await ethers.getContractFactory("WETH");
-    const wboaContractAddress = process.env.WBOA_ADDRESS || "";
+    const wboaContractAddress = process.env.WETH_ADDRESS || "";
 
     const proxyContractAddress = process.env.PAYABLE_PROXY_ADDRESS || "";
 

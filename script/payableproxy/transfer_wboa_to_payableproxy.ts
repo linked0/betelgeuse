@@ -10,7 +10,7 @@ async function main() {
     const proxyAddress = process.env.PAYABLE_PROXY_ADDRESS || "";
 
     const WBOAFactory = await ethers.getContractFactory("WETH");
-    const wboaContract = await WBOAFactory.attach(process.env.WBOA_ADDRESS || "");
+    const wboaContract = await WBOAFactory.attach(process.env.WETH_ADDRESS || "");
 
     // send WBOA from testUser to PayableProxy
     const amount = "100";

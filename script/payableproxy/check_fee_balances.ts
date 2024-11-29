@@ -10,7 +10,7 @@ async function main() {
     const provider = ethers.provider;
     const proxyAddress = process.env.PAYABLE_PROXY_ADDRESS;
     const feeWithdrawAddress = process.env.FEE_WITHDRAW_ADDRESS;
-    const wboaContract = await WBOAFactory.attach(process.env.WBOA_ADDRESS);
+    const wboaContract = await WBOAFactory.attach(process.env.WETH_ADDRESS);
 
     console.log("====== PayableProxy Balances (%s)", proxyAddress);
     console.log("BOA\t:", (await provider.getBalance(proxyAddress)).toString());

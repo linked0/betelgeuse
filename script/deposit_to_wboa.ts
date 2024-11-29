@@ -9,11 +9,11 @@ async function main() {
     const WBOAFactory = await ethers.getContractFactory("WETH");
     const provider = ethers.provider;
 
-    const depositer = new Wallet(process.env.WBOA_DEPOSITER || "");
-    const depositAmount = ethers.utils.parseEther(process.env.WBOA_DEPOSIT_AMOUNT || "0");
+    const depositer = new Wallet(process.env.WETH_DEPOSITER || "");
+    const depositAmount = ethers.utils.parseEther(process.env.WETH_DEPOSIT_AMOUNT || "0");
     const depositSigner = new NonceManager(new GasPriceManager(provider.getSigner(depositer.address)));
 
-    const wboaToken = await WBOAFactory.attach(process.env.WBOA_ADDRESS);
+    const wboaToken = await WBOAFactory.attach(process.env.WETH_ADDRESS);
     await wboaToken.connect(depositSigner).deposit({ value: depositAmount });
 
     console.log("%d BOAs of %s deposited", depositAmount, depositer.address);

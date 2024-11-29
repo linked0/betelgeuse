@@ -81,7 +81,7 @@ async function main() {
   const WBOA9Factory = await ethers.getContractFactory("WBOA9");
   const WBOA9 = await WBOA9Factory.connect(adminSigner).deploy();
   await WBOA9.deployed();
-  console.log(`WBOA_ADDRESS=${WBOA9.address}`);
+  console.log(`WETH_ADDRESS=${WBOA9.address}`);
 
   // Deplly Multicall contract
   const MulticallFactory = await ethers.getContractFactory("Multicall");

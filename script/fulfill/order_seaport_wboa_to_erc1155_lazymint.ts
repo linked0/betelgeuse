@@ -50,7 +50,7 @@ async function main() {
     const marketplace = await SeaportFacotry.attach(process.env.SEAPORT_ADDRESS || "");
     const storefront = await StorefrontFactory.attach(process.env.LAZY_MINT_ADAPTER_ADDRESS || "");
     const assetToken = await AssetContractFactory.attach(process.env.ASSET_CONTRACT_SHARED_ADDRESS || "");
-    const wboaToken = await WBOAFactory.attach(process.env.WBOA_ADDRESS);
+    const wboaToken = await WBOAFactory.attach(process.env.WETH_ADDRESS);
 
     const quantity = Number(process.env.SPIDER_VERSE_NFT_QUANTITY || "1");
     const tokenIndex = BigNumber.from(process.env.SPIDER_VERSE_NFT_INDEX || "0");

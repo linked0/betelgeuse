@@ -129,7 +129,7 @@ const config: HardhatUserConfig = {
                 process.env.SPIDER_VERSE_NFT_CREATOR_KEY ?? "",
                 process.env.FEE_COLLECTOR_OWNER_KEY ?? "",
                 process.env.FEE_TEST_TRANSFER_KEY ?? "",
-                process.env.WBOA_DEPOSITER ?? "",
+                process.env.WETH_DEPOSITER ?? "",
             ],
         },
         devnet: {
@@ -146,7 +146,7 @@ const config: HardhatUserConfig = {
                 process.env.SPIDER_VERSE_NFT_CREATOR_KEY ?? "",
                 process.env.FEE_COLLECTOR_OWNER_KEY ?? "",
                 process.env.FEE_TEST_TRANSFER_KEY ?? "",
-                process.env.WBOA_DEPOSITER ?? "",
+                process.env.WETH_DEPOSITER ?? "",
             ],
         },
         testnet: {
@@ -163,7 +163,7 @@ const config: HardhatUserConfig = {
                 process.env.SPIDER_VERSE_NFT_CREATOR_KEY ?? "",
                 process.env.FEE_COLLECTOR_OWNER_KEY ?? "",
                 process.env.FEE_TEST_TRANSFER_KEY ?? "",
-                process.env.WBOA_DEPOSITER ?? "",
+                process.env.WETH_DEPOSITER ?? "",
             ],
         },
         goerli: {
@@ -180,7 +180,7 @@ const config: HardhatUserConfig = {
                 process.env.SPIDER_VERSE_NFT_CREATOR_KEY ?? "",
                 process.env.FEE_COLLECTOR_OWNER_KEY ?? "",
                 process.env.FEE_TEST_TRANSFER_KEY ?? "",
-                process.env.WBOA_DEPOSITER ?? "",
+                process.env.WETH_DEPOSITER ?? "",
             ],
         },
         localnet: {
@@ -197,7 +197,7 @@ const config: HardhatUserConfig = {
                 process.env.SPIDER_VERSE_NFT_CREATOR_KEY ?? "",
                 process.env.FEE_COLLECTOR_OWNER_KEY ?? "",
                 process.env.FEE_TEST_TRANSFER_KEY ?? "",
-                process.env.WBOA_DEPOSITER ?? "",
+                process.env.WETH_DEPOSITER ?? "",
             ],
         },
     },
