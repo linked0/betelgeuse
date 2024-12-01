@@ -77,18 +77,6 @@ async function main() {
   // Set the shared proxy of assetToken to SharedStorefront
   await assetContract.addSharedProxyAddress(lazymintAdapter.address);
 
-  // Deploy WBOA contract
-  const WBOA9Factory = await ethers.getContractFactory("WBOA9");
-  const WBOA9 = await WBOA9Factory.connect(adminSigner).deploy();
-  await WBOA9.deployed();
-  console.log(`WETH_ADDRESS=${WBOA9.address}`);
-
-  // Deplly Multicall contract
-  const MulticallFactory = await ethers.getContractFactory("Multicall");
-  const multicall = await MulticallFactory.connect(adminSigner).deploy();
-  await multicall.deployed();
-  console.log(`MULTICALL_ADDRESS=${multicall.address}`);
-
   // Mint AssetContractShared NFT Tokens
   const creator = new Wallet(process.env.SPIDER_VERSE_NFT_CREATOR_KEY || "");
   const creatorSigner = new NonceManager(new GasPriceManager(provider.getSigner(creator.address)));
@@ -102,6 +90,18 @@ async function main() {
   const tokenId = createTokenId(creator.address, tokenIndex, quantity);
   await creatorContract.mint(creator.address, tokenId, quantity, buffer);
   console.log(`SPIDER_VERSE_NFT_LAST_COMBINE_TOKEN_ID=${tokenId.toHexString()}`);
+
+  // Deploy WBOA contract
+  const WBOA9Factory = await ethers.getContractFactory("WBOA9");
+  const WBOA9 = await WBOA9Factory.connect(adminSigner).deploy();
+  await WBOA9.deployed();
+  console.log(`WETH_ADDRESS=${WBOA9.address}`);
+
+  // Deplly Multicall contract
+  const MulticallFactory = await ethers.getContractFactory("Multicall");
+  const multicall = await MulticallFactory.connect(adminSigner).deploy();
+  await multicall.deployed();
+  console.log(`MULTICALL_ADDRESS=${multicall.address}`);
 
   const [address, tokenIdx, maxSupply] = parseTokenId(tokenId.toString());
   console.log("====== Minted NFT information ======");
