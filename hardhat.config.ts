@@ -185,6 +185,23 @@ const config: HardhatUserConfig = {
         },
         localnet: {
             url: process.env.LOCALNET_URL ?? "",
+            chainId: 7212309,
+            accounts: [
+                process.env.ADMIN_KEY ?? "",
+                process.env.USER_KEY ?? "",
+                process.env.OWNER_KEY ?? "",
+                process.env.ZONE_KEY ?? "",
+                process.env.BUYER_KEY ?? "",
+                process.env.ORDER_NFT_BUYER_KEY ?? "",
+                process.env.ORDER_NFT_SELLER_KEY ?? "",
+                process.env.SPIDER_VERSE_NFT_CREATOR_KEY ?? "",
+                process.env.FEE_COLLECTOR_OWNER_KEY ?? "",
+                process.env.FEE_TEST_TRANSFER_KEY ?? "",
+                process.env.WETH_DEPOSITER ?? "",
+            ],
+        },
+        marigold: {
+            url: process.env.MARIGOLD_URL ?? "",
             chainId: 12301,
             accounts: [
                 process.env.ADMIN_KEY ?? "",
