@@ -1,0 +1,58 @@
+# Warning: This workflow is intended for dev deployment only
+# and is automatically run if the branch name starts with 'dev'
+name: DEV Auto Build and deploy of Docker Image
+on:
+  push:
+    branches: [ dev** ]
+  workflow_dispatch:
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    env:
+      HAVE_DOCKERHUB_SECRET: ${{ secrets.DHUB_TOKEN != '' && secrets.DHUB_USER != '' }}
+    steps:
+      - name: Set up Docker Build
+        uses: docker/setup-buildx-action@v2
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        id: login
+        if: env.HAVE_DOCKERHUB_SECRET
+        with:
+          username: ${{ secrets.DHUB_USER }}
+          password: ${{ secrets.DHUB_TOKEN }}
+      - name: 'Build and push'
+        uses: docker/build-push-action@v3
+        with:
+          # Either 'success' or 'skipped'
+          push: ${{ steps.login.outcome == 'success' }}
+          tags: bosagora/boa-space-backend:dev
+  run-playbook:
+    runs-on: ubuntu-latest
+    needs: [ docker ]
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v3
+    - name: Install SSH key
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.DEVNET_PEM }}
+        name: id_rsa # optional
+        known_hosts: |
+          13.228.175.168 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPqYwmVANztM/pJf5b5PXyDu2+YyjkJTbyuO4C+JXAJcFk5xG9AA3NvcvwgmfGego0e2Tg7WI91YovQCTcVmzSE=
+    - name: run playbook
+      run: |
+        ansible-playbook -u ubuntu \
+        --extra-vars "TAG=dev" \
+        --extra-vars "RPC_URL=https://testnet.bosagora.org" \
+        --extra-vars "NODE_DEV=false" \
+        --extra-vars "DEPLOY_TARGET=DEV" \
+        --extra-vars "JWT_SECRET=${{ secrets.JWT_SECRET_DEV }}" \
+        --extra-vars "AWS_ACCESS_KEY_ID=${{ secrets.IAM_DEV_AWS_ACCESS_KEY_ID }}" \
+        --extra-vars "AWS_SECRET_ACCESS_KEY=${{ secrets.IAM_DEV_AWS_SECRET_ACCESS_KEY }}" \
+        --extra-vars "BUCKET_NAME=dev.boaspace.io" \
+        --extra-vars "POSTGRES_HOST=boa-space-dev.cpx85wvt8szu.ap-southeast-1.rds.amazonaws.com" \
+        --extra-vars "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD_DEV }}" \
+        --extra-vars "SHAREDASSET_CONTRACT=0x2fddd0f488B767E8Dd42aE4E60f0685A2e15b1Fd" \
+        --extra-vars "LAZY_MINT_ADAPTER=0x790c4c73155F89F93ad18e3b3B483B688E867c4b" \
+        --extra-vars "NATIVE_TOKEN=0x0000000000000000000000000000000000000000" \
+        -i ansible/inventory_dev.yml ansible/deploy.yml

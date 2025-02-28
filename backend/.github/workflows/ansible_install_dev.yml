@@ -1,0 +1,30 @@
+# Warning: This workflow is intended for dev or test installation only
+name: DEV Manual run to install apt packages and docker on fresh install of Ubuntu 22.04 LTS
+on:
+  workflow_dispatch:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      - name: Run ansible-lint
+        uses: ansible-community/ansible-lint-action@v6
+  run-playbook:
+    runs-on: ubuntu-latest
+    # Require validate to pass
+    needs: [ validate ]
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2.4.0
+        with:
+          key: ${{ secrets.DEVNET_PEM }}
+          name: id_rsa # optional
+          known_hosts: |
+            13.228.175.168 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPqYwmVANztM/pJf5b5PXyDu2+YyjkJTbyuO4C+JXAJcFk5xG9AA3NvcvwgmfGego0e2Tg7WI91YovQCTcVmzSE=
+          if_key_exists: fail # replace / ignore / fail; optional (defaults to fail)
+      - name: run playbook
+        run: |
+          ansible-playbook -u ubuntu -i ansible/inventory_dev.yml ansible/install.yml
