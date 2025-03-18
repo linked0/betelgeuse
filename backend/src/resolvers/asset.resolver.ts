@@ -52,7 +52,7 @@ export class AssetResolver {
     try {
       const { em } = ctx;
       if (!assetContractAddress)
-        assetContractAddress = process.env.SHAREDASSET_CONTRACT || '';
+        assetContractAddress = process.env.ASSET_CONTRACT_SHARED_ADDRESS || '';
 
       return await em.findOneOrFail(Asset, {
         assetContractAddress,
@@ -220,7 +220,7 @@ export class AssetResolver {
       );
       const asset = new Asset(
         creator,
-        process.env.SHAREDASSET_CONTRACT || '',
+        process.env.ASSET_CONTRACT_SHARED_ADDRESS || '',
         tokenId,
         totalSupply,
         name,
@@ -234,7 +234,7 @@ export class AssetResolver {
       // asset.owners.add(creator);
 
       asset.assetContract = await em.findOneOrFail(AssetContract, {
-        contractAddress: process.env.SHAREDASSET_CONTRACT || '',
+        contractAddress: process.env.ASSET_CONTRACT_SHARED_ADDRESS || '',
       });
 
       if (assetCollectionId === undefined) {

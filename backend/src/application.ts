@@ -107,7 +107,7 @@ export default class Application {
           .then(() => console.log('💪 zeroUser persisted to database'))
           .catch((err) => console.log('😱 something went wrong!:', err));
       }
-      const sharedStoreContractAddress = process.env.SHAREDASSET_CONTRACT;
+      const sharedStoreContractAddress = process.env.ASSET_CONTRACT_SHARED_ADDRESS;
       const contract = await this.orm.em.findOne(AssetContract, {
         contractAddress: sharedStoreContractAddress,
       });

@@ -22,7 +22,7 @@
           POSTGRES_DB: "boaspace"
           POSTGRES_USER: "postgres"
           POSTGRES_PASSWORD: "{{ POSTGRES_PASSWORD }}"
-          SHAREDASSET_CONTRACT: "{{ SHAREDASSET_CONTRACT }}"
+          ASSET_CONTRACT_SHARED_ADDRESS: "{{ ASSET_CONTRACT_SHARED_ADDRESS }}"
           LAZY_MINT_ADAPTER: "{{ LAZY_MINT_ADAPTER }}"
           NATIVE_TOKEN: "{{ NATIVE_TOKEN }}"
         ports:

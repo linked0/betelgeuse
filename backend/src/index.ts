@@ -13,7 +13,7 @@ async function main() {
   console.log('POSTGRES_DB :', process.env.POSTGRES_DB);
   console.log('JWT_SECRET :', process.env.JWT_SECRET);
   console.log('S3_REGION :', process.env.S3_REGION);
-  console.log('SHAREDASSET_CONTRACT :', process.env.SHAREDASSET_CONTRACT);
+  console.log('ASSET_CONTRACT_SHARED_ADDRESS :', process.env.ASSET_CONTRACT_SHARED_ADDRESS);
   console.log('LAZY_MINT_ADAPTER :', process.env.LAZY_MINT_ADAPTER);
   console.log('NATIVE_TOKEN :', process.env.NATIVE_TOKEN);
   application = new Application();

@@ -16,7 +16,7 @@ import { parseEther } from "ethers/lib/utils";
 export const SEAPORT_ADDRESS = process.env.REACT_APP_SEAPORT_ADDRESS;
 export const LAZY_MINT_ADAPTER = process.env.REACT_APP_LAZY_MINT_ADAPTER_ADDRESS;
 export const ASSET_CONTRACT = process.env.REACT_APP_ASSET_CONTRACT_SHARED_ADDRESS;
-export const WBOA9 = process.env.REACT_APP_WBOA9_ADDRESS;
+export const WBOA9 = process.env.REACT_APP_WETH_ADDRESS;
 export const PAYABLE_PROXY = process.env.REACT_APP_PAYABLE_PROXY_ADDRESS;
 export const TOKEN_ID = process.env.REACT_APP_TOKEN_ID;
 export const SERVICE_FEE: number = Number(process.env.REACT_APP_SERVICE_FEE) || NaN;

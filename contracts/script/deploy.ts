@@ -103,6 +103,15 @@ async function main() {
   await multicall.deployed();
   console.log(`MULTICALL_ADDRESS=${multicall.address}`);
 
+  console.log("=====================================");
+  console.log("# These constants are for .env of frontend");
+  console.log(`REACT_APP_SEAPORT_ADDRESS=${seaport.address}`);
+  console.log(`REACT_APP_ASSET_CONTRACT_SHARED_ADDRESS=${assetContract.address}`);
+  console.log(`REACT_APP_LAZY_MINT_ADAPTER_ADDRESS=${lazymintAdapter.address}`);
+  console.log(`REACT_APP_WETH_ADDRESS=${WBOA9.address}`);
+  console.log(`REACT_APP_PAYABLE_PROXY_ADDRESS=${process.env.PAYABLE_PROXY_ADDRESS}`);
+  console.log(`REACT_APP_MULTICALL_ADDRESS=${multicall.address}`);
+
   const [address, tokenIdx, maxSupply] = parseTokenId(tokenId.toString());
   console.log("====== Minted NFT information ======");
   console.log("tokenId:", tokenId);

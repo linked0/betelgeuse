@@ -6,7 +6,7 @@ import User from '../entities/user.entity';
 export class DatabaseSeeder extends Seeder {
   async run(em: EntityManager): Promise<void> {
     // Create Contract
-    const sharedStoreContractAddress = process.env.SHAREDASSET_CONTRACT;
+    const sharedStoreContractAddress = process.env.ASSET_CONTRACT_SHARED_ADDRESS;
     const sharedStoreContract = new AssetContract(
       ItemType.ERC1155,
       MetaType.CENTRALIZED,

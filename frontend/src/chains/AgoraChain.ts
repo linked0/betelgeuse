@@ -5,7 +5,7 @@ export const AgoraMainnet: Chain = {
   chainName: "PoohMainnet",
   isTestChain: false,
   isLocalChain: false,
-  multicallAddress: "0x045d5aFA977791EFA0A78d9Cd31D0327DB79C632",
+  multicallAddress: process.env.REACT_APP_MULTICALL_ADDRESS || "",
   rpcUrl: "https://mainnet.bosagora.org",
   nativeCurrency: {
     name: "POO",
@@ -23,7 +23,7 @@ export const AgoraTestnet: Chain = {
   chainName: "PoohLocalnet",
   isTestChain: true,
   isLocalChain: true,
-  multicallAddress: "0x1b985dDfB6Ad5456Af45065698c0930dFF2D767b",
+  multicallAddress: process.env.REACT_APP_MULTICALL_ADDRESS_TESTNET || "",
   rpcUrl: "http://127.0.0.1:8585",
   nativeCurrency: {
     name: "POO",
