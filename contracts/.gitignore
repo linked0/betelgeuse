@@ -1,5 +1,7 @@
 node_modules
 .env
+.env.devnet
+.env.marigold.*
 coverage
 coverage.json
 typechain-types

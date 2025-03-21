@@ -13,7 +13,8 @@ import "@typechain/hardhat";
 import "hardhat-gas-reporter";
 import "solidity-coverage";
 
-dotenv.config({ path: "env/.env" });
+// Load environment file dynamically: defaults to "env/.env"
+dotenv.config({ path: process.env.ENV_FILE || ".env" });
 
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
@@ -203,6 +204,23 @@ const config: HardhatUserConfig = {
         marigold: {
             url: process.env.MARIGOLD_URL ?? "",
             chainId: 12301,
+            accounts: [
+                process.env.ADMIN_KEY ?? "",
+                process.env.USER_KEY ?? "",
+                process.env.OWNER_KEY ?? "",
+                process.env.ZONE_KEY ?? "",
+                process.env.BUYER_KEY ?? "",
+                process.env.ORDER_NFT_BUYER_KEY ?? "",
+                process.env.ORDER_NFT_SELLER_KEY ?? "",
+                process.env.SPIDER_VERSE_NFT_CREATOR_KEY ?? "",
+                process.env.FEE_COLLECTOR_OWNER_KEY ?? "",
+                process.env.FEE_TEST_TRANSFER_KEY ?? "",
+                process.env.WETH_DEPOSITER ?? "",
+            ],
+        },
+        marigoldlocalnet: {
+            url: process.env.MARIGOLD_LOCALNET_URL ?? "",
+            chainId: 12309,
             accounts: [
                 process.env.ADMIN_KEY ?? "",
                 process.env.USER_KEY ?? "",
