@@ -1,3 +1,4 @@
+import * as dotenv from "dotenv";
 import { NonceManager } from "@ethersproject/experimental";
 import { BigNumber, Wallet } from "ethers";
 import { ethers } from "hardhat";
@@ -16,21 +17,21 @@ async function main() {
 
     const wboaToken = await WBOAFactory.attach(process.env.WETH_ADDRESS);
     await wboaToken.connect(depositSigner).deposit({ value: depositAmount });
-    console.log("%d BOAs of %s deposited", depositAmount, depositer.address);
+    console.log("%d BOAs(%s) of %s deposited", depositAmount, process.env.WETH_ADDRESS, depositer.address);
 
     // Admin
     const admin = new Wallet(process.env.ADMIN_KEY || "");
     const adminAmount = ethers.utils.parseEther(process.env.WETH_DEPOSIT_AMOUNT || "0");
     const adminSigner = new NonceManager(new GasPriceManager(provider.getSigner(admin.address)));
     await wboaToken.connect(adminSigner).deposit({ value: depositAmount });
-    console.log("%d BOAs of %s deposited", depositAmount, admin.address);
+    console.log("%d BOAs(%s) of %s deposited", depositAmount, process.env.WETH_ADDRESS, admin.address);
 
     // User
     const user = new Wallet(process.env.USER_KEY || "");
     const userAmount = ethers.utils.parseEther(process.env.WETH_DEPOSIT_AMOUNT || "0");
     const userSigner = new NonceManager(new GasPriceManager(provider.getSigner(user.address)));
     await wboaToken.connect(userSigner).deposit({ value: depositAmount });
-    console.log("%d BOAs of %s deposited", depositAmount, user.address);
+    console.log("%d BOAs(%s) of %s deposited", depositAmount, process.env.WETH_ADDRESS, user.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

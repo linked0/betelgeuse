@@ -1,6 +1,7 @@
 import * as dotenv from "dotenv";
 import { Wallet, utils } from "ethers";
 import { task } from "hardhat/config";
+import { resolve } from "path";
 
 import type { HardhatUserConfig } from "hardhat/config";
 import type { HardhatNetworkAccountUserConfig } from "hardhat/types/config";
@@ -13,8 +14,11 @@ import "@typechain/hardhat";
 import "hardhat-gas-reporter";
 import "solidity-coverage";
 
-// Load environment file dynamically: defaults to "env/.env"
-dotenv.config({ path: process.env.ENV_FILE || ".env" });
+// Load environment file dynamically: defaults to ".env"
+dotenv.config({
+    path: resolve(__dirname, ".", process.env.ENV_FILE || ".env"),
+    override: true,
+});
 
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
